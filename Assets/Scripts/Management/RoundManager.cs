@@ -14,7 +14,7 @@ public class RoundManager : MonoBehaviour
 
     private void Awake()
     {
-        GameObject[] gOs = GameObject.FindObjectsOfType<GameObject>();
+        RoundManager[] gOs = GameObject.FindObjectsOfType<RoundManager>();
 
         if (gOs.Length > 1 )
         {
@@ -24,7 +24,7 @@ public class RoundManager : MonoBehaviour
     
     protected void EndRound()
     {
-        if (FindObjectsOfType<BreakableBrick>().Length <= 0)
+        if (FindObjectsOfType<BreakableBrick>().Length < 1)
         {
             canvasScene.SetActive(true);
         }

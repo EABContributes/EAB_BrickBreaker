@@ -5,22 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class CanvasNav : MonoBehaviour
 {
-    // Vars
-    
     // Methods
     public void LoadNextScene(int aIDX)
     {
-        SceneManager.LoadScene(aIDX);
+        GameManager.Instance.NextScene();
+        //SceneManager.LoadScene(aIDX);
     }
 
     public void LoadStartScreen()
     {
-        GameManager.Instance.ResetScore();
+        //GameManager.Instance.ResetScore();
+        GameManager.Instance.StartScene();
         LoadNextScene(0);
     }
-
-    // Accessors
-
-    // Methods
 
 }

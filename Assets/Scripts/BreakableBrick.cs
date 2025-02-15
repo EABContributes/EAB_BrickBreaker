@@ -6,7 +6,12 @@ public class BreakableBrick : MonoBehaviour
 {
     // vars
     [SerializeField,Range(1,20)] protected int hitsToBreak;
+    [SerializeField, Range(1, 20)] protected int pointValue = 3;
     protected int currHitsToBreak = 0;
+
+    // break emitter
+    [SerializeField] ParticleSystem hit_ps;
+
     // methods
 
     private void Awake()
@@ -17,6 +22,7 @@ public class BreakableBrick : MonoBehaviour
     {
         currHitsToBreak -= aDamage;
         BreakBrick();
+        hit_ps.Play();
     }
 
     protected void BreakBrick()
@@ -24,6 +30,7 @@ public class BreakableBrick : MonoBehaviour
         if (currHitsToBreak <= 0)
         {
             //FindObjectOfType<RoundManager>().RemoveBrick(this);
+            GameManager.Instance.AddScore(pointValue);
             Destroy(gameObject);
         }
         
